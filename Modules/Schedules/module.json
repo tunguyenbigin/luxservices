@@ -1,0 +1,16 @@
+{
+    "name": "Schedules",
+    "alias": "schedules",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Schedules\\Providers\\SchedulesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
