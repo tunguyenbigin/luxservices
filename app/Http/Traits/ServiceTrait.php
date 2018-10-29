@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Traits;
+use Cache;
 trait ServiceTrait{
 	protected $model;
 	public function setModel($model){

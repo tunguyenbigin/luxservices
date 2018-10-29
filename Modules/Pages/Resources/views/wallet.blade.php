@@ -46,7 +46,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-3 col-lg-6 col-12">
-			<div class="card bg-success">
+			<div class="card bg-success cursor-pointer">
 				<div class="card-content">
 					<div class="card-body pb-1">
 						<div class="row text-white">
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="col-xl-3 col-lg-6 col-12">
-			<div class="card bg-danger">
+			<div class="card bg-danger cursor-pointer">
 				<div class="card-content">
 					<div class="card-body pb-1">
 						<div class="row text-white">
@@ -92,7 +92,7 @@
 			</div>
 		</div>
 		<div class="col-xl-3 col-lg-6 col-12">
-			<div class="card bg-info">
+			<div class="card bg-info cursor-pointer">
 				<div class="card-content">
 					<div class="card-body pb-1">
 						<div class="row text-white">
@@ -114,7 +114,7 @@
 			</div>
 		</div>
 		<div class="col-xl-3 col-lg-6 col-12">
-			<div class="card bg-warning">
+			<div class="card bg-warning cursor-pointerarc">
 				<div class="card-content">
 					<div class="card-body pb-1">
 						<div class="row text-white">
@@ -145,55 +145,50 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6 col-sm-12">
-			<div class="card bg-gradient-striped-yellow box-shadow-0">
+			<div class="card bg-gradient-striped-yellow box-shadow-0" id="card-stripe-account">
 				<div class="card-header">
 					<h4 class="card-title">Striped Setting</h4>
 					<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
 					<div class="heading-elements">
 						<ul class="list-inline mb-0">
-							<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
 							<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-							<li><a data-action="close"><i class="ft-x"></i></a></li>
+							<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+							<li><a data-action="edit"><i class="ft-edit-2"></i></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="card-content collapse show">
 					<div class="card-body">
-						<form action="#" class="card-form">
-							<fieldset class="mb-0">
-								<h5>Card Number</h5>
-								<div class="form-group mb-1">
-									<input type="text" class="form-control round card-number unknown jp-card-invalid" name="number" id="card-number" maxlength="19" placeholder="Card Number" autocomplete="off">
-								</div>
-							</fieldset>
-							<fieldset class="mb-0">
-								<h5>Card Name</h5>
-								<div class="form-group mb-1">
-									<input type="text" class="form-control round card-name jp-card-valid" name="name" id="card-name" placeholder="Card Holder Name" autocomplete="off">
-								</div>
-							</fieldset>
-							<div class="row">
-								<div class="col-md-6">
-									<fieldset class="mb-0">
-										<h5>Expiry Date</h5>
-										<div class="form-group mb-1">
-											<input type="text" class="form-control round card-expiry jp-card-valid" name="expiry" id="card-expiry" placeholder="Card Expiry Date" autocomplete="off">
-										</div>
-									</fieldset>
-								</div>
-								<div class="col-md-6">
-									<fieldset class="mb-0">
-										<h5>Card Number</h5>
-										<div class="form-group mb-1">
-											<input type="text" class="form-control round card-cvc jp-card-valid" name="cvc" id="card-cvc" maxlength="16" placeholder="Card CVC Number" autocomplete="off">
-										</div>
-									</fieldset>
-								</div>
+						<fieldset class="mb-0">
+							<h5>Card Number</h5>
+							<div class="form-group mb-1">
+								<span class="replace-input" data-type="text" data-name="card_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="5313581000123430">5313581000123430</span>
 							</div>
-							<div class="form-group text-right">
-								<button type="button" class="btn btn-danger round btn-min-width box-shadow-5">Update</button>
+						</fieldset>
+						<fieldset class="mb-0">
+							<h5>Card Name</h5>
+							<div class="form-group mb-1">
+								<span class="replace-input" data-type="text" data-name="card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="NGUYEN VAN TU" data-placeholder="Card Holder Name" data-id="name">NGUYEN VAN TU</span>
 							</div>
-						</form>
+						</fieldset>
+						<div class="row">
+							<div class="col-md-6">
+								<fieldset class="mb-0">
+									<h5>Expiry Date</h5>
+									<div class="form-group mb-1">
+										<span class="replace-input" data-type="text" data-name="card_expiry" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="05/21" data-placeholder="Card Expiry Date" data-id="card-expiry">05/21</span>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-md-6">
+								<fieldset class="mb-0">
+									<h5>Card CVC Number</h5>
+									<div class="form-group mb-1">
+										<span class="replace-input" data-type="text" data-name="card_cvc" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="123" data-placeholder="Card CVC Number" data-id="card-cvc">123</span>
+									</div>
+								</fieldset>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -205,9 +200,9 @@
 					<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
 					<div class="heading-elements">
 						<ul class="list-inline mb-0">
-							<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
 							<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-							<li><a data-action="close"><i class="ft-x"></i></a></li>
+							<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+							<li><a data-action="edit"><i class="ft-edit-2"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -230,4 +225,14 @@
 @stop
 
 @section('scripts')
+	<script type="text/javascript">
+		let api={
+				banks:{
+                    stripe:{
+                        update: '{{ route("users.banks.stripe.update") }}'
+                    }
+				}
+		}
+	</script>
+	<script type="text/javascript" src="{{ asset('storage/js/bank/banks.js') }}"></script>
 @stop

@@ -48,6 +48,14 @@
         * @return mixed
         */
         public function getProfileNormalInformation($userid);
+
+        /**
+         * update personal informations
+         * @param $userid
+         * @param $data
+         * @return bool
+         */
+        public function updatePersonalInformations($userid, $data);
         
  	}
 ?>

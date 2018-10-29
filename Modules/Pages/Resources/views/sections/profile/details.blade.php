@@ -34,7 +34,7 @@
 						</dl>
 						<dl class="row">
 							<dt class="col-sm-3">Gender</dt>
-							<dd class="col-sm-9"><span class="replace-input" data-type="select" data-name="gender" data-selected="{{$profile->gender}}" data-class="form-control input-sm" data-original-value="{{ !$profile->gender.'=Male,'.$profile->gender.'=Female' }}">{{ $profile->gender ? 'Male' : 'Female' }}</span></dd>
+							<dd class="col-sm-9"><span class="replace-input" data-type="select" data-name="gender" data-selected="{{$profile->gender}}" data-class="form-control input-sm" data-original-value="{{ !$profile->gender.'=Male,'.$profile->gender.'=Female' }}" data-selected-text="{{ $profile->gender ? 'Male' : 'Female' }}">{{ $profile->gender ? 'Male' : 'Female' }}</span></dd>
 						</dl>
 						<dl class="row">
 							<dt class="col-sm-3">Job</dt>

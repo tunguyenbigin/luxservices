@@ -119,6 +119,17 @@ class Form{
         })
     }
 
+    handleCancelProcess(data){
+        //console.log('hook handle cancel action process form')
+    }
+
+    handleCancel(){
+        let btnCancel = $(this.formId).children().find('button[data-control="cancel"]');
+        btnCancel.click(()=>{
+            this.handleCancelProcess()
+        })
+    }
+
     handleSuccess(data){
         //console.log('hook handle success has been called')
     }

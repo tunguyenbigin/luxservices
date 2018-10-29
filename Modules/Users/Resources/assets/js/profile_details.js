@@ -9,6 +9,7 @@ personalEditMode.wrapper = '#card-profile-personal'
 personalEditMode.formid = formPersonalInformations
 
 personalEditMode.editAction()
+personalEditMode.cancelAction()
 
 personalEditMode.createFormRequest = ()=>{
 	var personalForm = new Form()
@@ -28,9 +29,34 @@ personalEditMode.createFormRequest = ()=>{
 		personalForm.handleLoadingPanelClose = ()=>{
 			personalEditMode.removeLoadingPanel()
 		}
-		personalForm.handleSubmit()
+		personalForm.handleCancelProcess = ()=>{
+			personalEditMode.cancelEdit()
+		}
+
+    	personalForm.handleSubmit()
+    	personalForm.handleCancel()
+
+		personalForm.handleSuccess = (data)=>{
+            //personalEditMode.cancelEdit()
+			swal({
+				title:'Congratulations!',
+				text: data.msg,
+				icon: 'success',
+				onClose: function(){
+					alert('handle')
+					window.location.reload()
+                }
+			})
+		}
+		personalForm.handleError = ()=>{
+            swal({
+				title: 'Error!',
+                text: data.msg,
+                icon: 'error'
+            })
+		}
 }
 
 jQuery(document).ready(function(){
-	alert('loading ok')
+
 })

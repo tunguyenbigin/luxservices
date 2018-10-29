@@ -19,6 +19,7 @@ mix.webpackConfig({
 })
 mix.js('Modules/Users/Resources/assets/js/app.js', 'public/storage/js/users/app.js')
 	.js('Modules/Users/Resources/assets/js/profile_details.js', 'public/storage/js/users/profile_details.js')
+    .js('Modules/Banks/Resources/assets/js/banks.js', 'public/storage/js/bank/banks.js')
     //inc
     .js('Modules/Themes/Resources/assets/inc/form.js', 'public/storage/js/themes/inc/form.js');
     //end inc
