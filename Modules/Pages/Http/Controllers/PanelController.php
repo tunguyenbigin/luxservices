@@ -2,16 +2,19 @@
     use App\Http\Controllers\Controller;
     use Modules\Users\Services\UserServices;
     use Modules\Users\Services\ProfileServices;
+    use Modules\Banks\Services\BankServices;
     use Illuminate\Http\Request;
 
     class PanelController extends Controller{
 
     	protected $userServices;
     	protected $profileServices;
+    	protected $bankServices;
 
-    	public function __construct( UserServices $userServices, ProfileServices $profileServices ){
+    	public function __construct( UserServices $userServices, ProfileServices $profileServices, BankServices $bankServices ){
     		$this->userServices 		= $userServices;
     		$this->profileServices 		= $profileServices;
+    		$this->bankServices 		= $bankServices;
     	}
 
     	/**
@@ -87,7 +90,10 @@
 
 
 	    public function wallet(){
-	    	return view('pages::wallet');
+	    	$card = $this->bankServices->getCardInfo(auth()->user()->id);
+	    	if(!$card) abort(404);
+	    	$cardInfo = json_decode($card);
+	    	return view('pages::wallet', compact('cardInfo'));
 	    }
 
 	    public function services(){

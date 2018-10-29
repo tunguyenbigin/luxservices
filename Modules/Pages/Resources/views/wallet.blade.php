@@ -162,13 +162,13 @@
 						<fieldset class="mb-0">
 							<h5>Card Number</h5>
 							<div class="form-group mb-1">
-								<span class="replace-input" data-type="text" data-name="card_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="5313581000123430">5313581000123430</span>
+								<span class="replace-input" data-type="text" data-name="card_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $cardInfo->card_number }}">{{ $cardInfo->card_number }}</span>
 							</div>
 						</fieldset>
 						<fieldset class="mb-0">
 							<h5>Card Name</h5>
 							<div class="form-group mb-1">
-								<span class="replace-input" data-type="text" data-name="card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="NGUYEN VAN TU" data-placeholder="Card Holder Name" data-id="name">NGUYEN VAN TU</span>
+								<span class="replace-input" data-type="text" data-name="card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $cardInfo->card_holder_name }}" data-placeholder="Card Holder Name" data-id="name">{{ $cardInfo->card_holder_name }}</span>
 							</div>
 						</fieldset>
 						<div class="row">
@@ -176,7 +176,7 @@
 								<fieldset class="mb-0">
 									<h5>Expiry Date</h5>
 									<div class="form-group mb-1">
-										<span class="replace-input" data-type="text" data-name="card_expiry" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="05/21" data-placeholder="Card Expiry Date" data-id="card-expiry">05/21</span>
+										<span class="replace-input" data-type="text" data-name="card_expiry" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $cardInfo->card_expiry }}" data-placeholder="Card Expiry Date" data-id="card-expiry">{{ $cardInfo->card_expiry }}</span>
 									</div>
 								</fieldset>
 							</div>
@@ -184,7 +184,7 @@
 								<fieldset class="mb-0">
 									<h5>Card CVC Number</h5>
 									<div class="form-group mb-1">
-										<span class="replace-input" data-type="text" data-name="card_cvc" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="123" data-placeholder="Card CVC Number" data-id="card-cvc">123</span>
+										<span class="replace-input" data-type="text" data-name="card_cvc" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $cardInfo->card_cvc }}" data-placeholder="Card CVC Number" data-id="card-cvc">{{ $cardInfo->card_cvc }}</span>
 									</div>
 								</fieldset>
 							</div>
@@ -194,7 +194,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-12">
-			<div class="card border-top-pink border-top-3 border-bottom-blue border-bottom-3 box-shadow-0">
+			<div class="card border-top-pink border-top-3 border-bottom-blue border-bottom-3 box-shadow-0" id="card-bank-account">
 				<div class="card-header">
 					<h4 class="card-title">Bank Accounts</h4>
 					<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
@@ -208,15 +208,39 @@
 				</div>
 				<div class="card-content collapse show">
 					<div class="card-body">
-						<p class="card-text">Use <code>border-top-*</code> and <code>border-bottom-*</code>                      class for border top and bottom color.</p>
+						<fieldset class="mb-0">
+							<h5>Bank Name</h5>
+							<div class="form-group mb-1">
+								<span class="replace-input" data-type="text" data-name="bank_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="VIETCOM BANK">VIETCOM BANK</span>
+							</div>
+						</fieldset>
+						<fieldset class="mb-0">
+							<h5>Branch</h5>
+							<div class="form-group mb-1">
+								<span class="replace-input" data-type="text" data-name="bank_branch" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="TAY SAI GON" data-placeholder="Bank Branch" data-id="bank_branch">TAY SAI GON</span>
+							</div>
+						</fieldset>
+						<div class="row">
+							<div class="col-md-6">
+								<fieldset class="mb-0">
+									<h5>Account Number</h5>
+									<div class="form-group mb-1">
+										<span class="replace-input" data-type="text" data-name="bank_account_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="6868682607535021" data-placeholder="Card Expiry Date" data-id="bank_account_number">6868682607535021</span>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-md-6">
+								<fieldset class="mb-0">
+									<h5>Card Holder Name</h5>
+									<div class="form-group mb-1">
+										<span class="replace-input" data-type="text" data-name="bank_card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="NGUYEN HONG NHUNG" data-placeholder="Card Holder Name" data-id="bank_card_holder_name">NGUYEN HONG NHUNG</span>
+									</div>
+								</fieldset>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="card-footer text-muted">
-					<!--span>2 days ago</span-->
-					<span class="float-right">
-						<button type="button" class="btn btn-primary btn-min-width box-shadow-5 btn-sm round"><i class="la la-plus-circle"></i> Add</button>
-					</span>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -230,6 +254,9 @@
 				banks:{
                     stripe:{
                         update: '{{ route("users.banks.stripe.update") }}'
+                    },
+                    account:{
+                    	update: '{{ route("users.banks.account.update") }}'
                     }
 				}
 		}

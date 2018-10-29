@@ -16,12 +16,6 @@ stripeAccountEditMode.createFormRequest = ()=>{
     stripeForm.formId = '#'+formStripeAccount
     stripeForm.url = api.banks.stripe.update
     stripeForm.method ='post'
-    stripeForm.handleSuccess = (data)=>{
-        //console.log(data)
-    }
-    stripeForm.handleError = (data)=>{
-        //console.log(data)
-    }
 
     stripeForm.handleLoadingPanelOpen = ()=>{
         stripeAccountEditMode.addLoadingPanel()
@@ -37,15 +31,11 @@ stripeAccountEditMode.createFormRequest = ()=>{
     stripeForm.handleCancel()
 
     stripeForm.handleSuccess = (data)=>{
-        //stripeAccountEditMode.cancelEdit()
+        stripeAccountEditMode.cancelEdit()
         swal({
             title:'Congratulations!',
             text: data.msg,
             icon: 'success',
-            onClose: function(){
-                alert('handle')
-                window.location.reload()
-            }
         })
     }
     stripeForm.handleError = ()=>{
@@ -57,6 +47,50 @@ stripeAccountEditMode.createFormRequest = ()=>{
     }
 }
 
-jQuery(document).ready(function(){
 
-})
+
+
+let formBankAccount = 'bank-account'
+
+let bankAccountEditMode = new EditMode()
+bankAccountEditMode.wrapper = '#card-bank-account'
+bankAccountEditMode.formid = formBankAccount
+
+bankAccountEditMode.editAction()
+bankAccountEditMode.cancelAction()
+
+bankAccountEditMode.createFormRequest = ()=>{
+    var bankForm = new Form()
+    bankForm.formId = '#'+formBankAccount
+    bankForm.url = api.banks.account.update
+    bankForm.method ='post'
+
+    bankForm.handleLoadingPanelOpen = ()=>{
+        bankAccountEditMode.addLoadingPanel()
+    }
+    bankForm.handleLoadingPanelClose = ()=>{
+        bankAccountEditMode.removeLoadingPanel()
+    }
+    bankForm.handleCancelProcess = ()=>{
+        bankAccountEditMode.cancelEdit()
+    }
+
+    bankForm.handleSubmit()
+    bankForm.handleCancel()
+
+    bankForm.handleSuccess = (data)=>{
+        bankAccountEditMode.cancelEdit()
+        swal({
+            title:'Congratulations!',
+            text: data.msg,
+            icon: 'success',
+        })
+    }
+    bankForm.handleError = ()=>{
+        swal({
+            title: 'Error!',
+            text: data.msg,
+            icon: 'error'
+        })
+    }
+}

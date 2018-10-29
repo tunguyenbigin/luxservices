@@ -17,5 +17,23 @@
          * @return bool
          */
         public function createBalance($userId, $amount);
+
+        /**
+        * get user card bank info
+        * @param $userId
+        * @return json
+        */
+        public function getCardInfo($userId);
+
+        /**
+        * update bank info
+        * @param $type - type of account
+        * @param $userId - userId of bank account
+        * @param $data - array of data
+        * @return boolean
+        */
+        public function updateBankInfo($type = 'card', $userId, $data);
+
+        
     }
 ?>
