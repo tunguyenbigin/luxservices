@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 09, 2018 at 07:29 PM
+-- Generation Time: Oct 30, 2018 at 05:17 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -451,8 +451,11 @@ CREATE TABLE `skills` (
 CREATE TABLE `transactions` (
   `id` int(10) UNSIGNED NOT NULL,
   `userId` int(11) NOT NULL,
-  `type` int(11) NOT NULL COMMENT '1:deposit',
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'de:deposit, wd:withdraw, tf:transfer',
+  `fromUserId` int(11) DEFAULT NULL,
+  `toUserId` int(11) DEFAULT NULL,
   `amount` decimal(8,2) NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -507,7 +510,7 @@ CREATE TABLE `user_banks` (
 --
 
 INSERT INTO `user_banks` (`id`, `userId`, `bankInfo`, `visaInfo`, `status`, `created_at`, `updated_at`) VALUES
-(7, 15, NULL, NULL, 0, '2018-09-03 23:18:46', '2018-09-03 23:18:46'),
+(7, 15, 'O:8:\"stdClass\":4:{s:9:\"bank_name\";s:3:\"VCB\";s:11:\"bank_branch\";s:11:\"TAY SAI GON\";s:19:\"bank_account_number\";s:16:\"6868682607535021\";s:21:\"bank_card_holder_name\";s:17:\"NGUYEN HONG NHUNG\";}', 'O:8:\"stdClass\":4:{s:11:\"card_number\";s:16:\"4000000000000002\";s:16:\"card_holder_name\";s:15:\"TRAN QUANG KHAI\";s:11:\"card_expiry\";s:5:\"05/21\";s:8:\"card_cvc\";s:3:\"123\";}', 0, '2018-09-03 23:18:46', '2018-10-30 00:34:36'),
 (8, 16, NULL, NULL, 0, '2018-09-03 23:29:55', '2018-09-03 23:29:55');
 
 -- --------------------------------------------------------

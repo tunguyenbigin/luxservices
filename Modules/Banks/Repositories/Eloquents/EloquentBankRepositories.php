@@ -60,10 +60,29 @@
             return false;
         }
 
+        /**
+        * get user bank info
+        * @param $userId
+        * @return json
+        */
         public function getBankInfo($userId){
             $bankInfo = Bank::where('userId', (int)$userId)->first();
             if($bankInfo){
-                
+                $cardInfo = $bankInfo->bankInfo;
+                $bankData = [
+                    'bank_name'             => '',
+                    'bank_branch'           => '',
+                    'bank_account_number'   => '',
+                    'bank_card_holder_name' => ''
+                ];
+                if($cardInfo){
+                    $cardInfo = unserialize($cardInfo);
+                    $bankData['bank_name']                  = $cardInfo->bank_name;
+                    $bankData['bank_branch']                = $cardInfo->bank_branch;
+                    $bankData['bank_account_number']        = $cardInfo->bank_account_number;
+                    $bankData['bank_card_holder_name']      = $cardInfo->bank_card_holder_name;
+                }
+                return json_encode($bankData);
             }
             return false;
         }
@@ -75,9 +94,10 @@
         * @param $data - array of data
         * @return boolean
         */
-        public function updateBankInfo($type = 'card', $userId, $data){
+        public function updateBankInfo($type, $userId, $data){
             $bankInfo = $this->getCardInfo($userId);
-            if(!$bankInfo) return false;
+            $bankAccount = $this->getBankInfo($userId);
+            if(!$bankInfo || !$bankAccount) return false;
             if($type === 'card'){//update card info
                 $card = new \stdClass;
                 $card->card_number      = $data['card_number'];
@@ -87,7 +107,13 @@
                 $updated = Bank::where('userId', (int)$userId)->update(['visaInfo' => serialize($card)]);
                 return $updated;
             }else{//update bank account
-
+                $account = new \stdClass;
+                $account->bank_name             = $data['bank_name'];
+                $account->bank_branch           = $data['bank_branch'];
+                $account->bank_account_number   = $data['bank_account_number'];
+                $account->bank_card_holder_name = $data['bank_card_holder_name'];
+                $updated = Bank::where('userId', (int)$userId)->update(['bankInfo' => serialize($account)]);
+                return $updated;
             }
         }
 

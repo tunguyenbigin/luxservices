@@ -26,6 +26,13 @@
         public function getCardInfo($userId);
 
         /**
+        * get user bank info
+        * @param $userId
+        * @return json
+        */
+        public function getBankInfo($userId);
+
+        /**
         * update bank info
         * @param $type - type of account
         * @param $userId - userId of bank account

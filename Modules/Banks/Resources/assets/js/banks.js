@@ -94,3 +94,12 @@ bankAccountEditMode.createFormRequest = ()=>{
         })
     }
 }
+
+
+
+
+jQuery(document).ready(function($){
+    $(document).on('click','#depositAction',function(){
+        $('#modDeposit').modal('show')
+    })
+});

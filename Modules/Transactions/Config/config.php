@@ -1,5 +1,10 @@
 <?php
 
 return [
-    'name' => 'Transactions'
+    'name' 	=> 'Transactions',
+    'types'	=> [
+    	'de' => 'deposit',
+    	'wd' => 'withdraw',
+    	'tf' => 'transfer'
+    ]
 ];

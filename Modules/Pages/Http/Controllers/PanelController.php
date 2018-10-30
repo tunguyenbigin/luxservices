@@ -3,6 +3,7 @@
     use Modules\Users\Services\UserServices;
     use Modules\Users\Services\ProfileServices;
     use Modules\Banks\Services\BankServices;
+    use Modules\Transactions\Services\TransactionServices;
     use Illuminate\Http\Request;
 
     class PanelController extends Controller{
@@ -10,11 +11,13 @@
     	protected $userServices;
     	protected $profileServices;
     	protected $bankServices;
+    	protected $transactionServices;
 
-    	public function __construct( UserServices $userServices, ProfileServices $profileServices, BankServices $bankServices ){
+    	public function __construct( UserServices $userServices, ProfileServices $profileServices, BankServices $bankServices, TransactionServices $transactionServices ){
     		$this->userServices 		= $userServices;
     		$this->profileServices 		= $profileServices;
     		$this->bankServices 		= $bankServices;
+    		$this->transactionServices 	= $transactionServices;
     	}
 
     	/**
@@ -91,9 +94,11 @@
 
 	    public function wallet(){
 	    	$card = $this->bankServices->getCardInfo(auth()->user()->id);
-	    	if(!$card) abort(404);
+	    	$bank = $this->bankServices->getBankInfo(auth()->user()->id);
+	    	if(!$card || !$bank) abort(404);
 	    	$cardInfo = json_decode($card);
-	    	return view('pages::wallet', compact('cardInfo'));
+	    	$bankInfo = json_decode($bank);
+	    	return view('pages::wallet', compact('cardInfo', 'bankInfo'));
 	    }
 
 	    public function services(){

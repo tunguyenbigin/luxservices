@@ -16,14 +16,17 @@
         }
 
         public function updateStripeAccount(UpdateStripeRequest $req){
-            $update = $this->bankServces->updateBankInfo($type = 'card', auth()->user()->id, $req->all());
+            $update = $this->bankServces->updateBankInfo('card', auth()->user()->id, $req->all());
             if($update)
                 return response()->json(['status'=>'success', 'msg'=>'Update banks success!']);
             return response()->json(['status'=>'error', 'msg'=>'There were an error, please try again!']);
         }
 
         public function updateBankAccount(UpdateBankRequest $req){
-            dd($req->all());
+            $update = $this->bankServces->updateBankInfo('bank', auth()->user()->id, $req->all());
+            if($update)
+                return response()->json(['status'=>'success', 'msg'=>'Update banks success!']);
+            return response()->json(['status'=>'error', 'msg'=>'There were an error, please try again!']);
         }
 
     }

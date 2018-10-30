@@ -5,10 +5,25 @@
 @stop
 
 @section('styles')
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('storage/app-assets/css/plugins/animate/animate.min.css') }}">
+	<style type="text/css">
+		#modDeposit .list-banks{}
+		#modDeposit .list-banks>ul{}
+		#modDeposit .list-banks>ul>li{
+			list-style: none;
+			float: left;
+		}
+		#modDeposit .list-banks>ul>li>a{
+			padding: 2px;
+			display: block;
+		}
+	</style>
 @stop
 
 @section('content')
+
+@include('pages::modals.banks.deposit')
+
 <div class="content-header row">
 	<div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
 		<h3 class="content-header-title mb-0 d-inline-block">User Wallet</h3>
@@ -69,7 +84,7 @@
 			</div>
 		</div>
 		<div class="col-xl-3 col-lg-6 col-12">
-			<div class="card bg-danger cursor-pointer">
+			<div class="card bg-danger cursor-pointer" id="depositAction">
 				<div class="card-content">
 					<div class="card-body pb-1">
 						<div class="row text-white">
@@ -211,13 +226,13 @@
 						<fieldset class="mb-0">
 							<h5>Bank Name</h5>
 							<div class="form-group mb-1">
-								<span class="replace-input" data-type="text" data-name="bank_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="VIETCOM BANK">VIETCOM BANK</span>
+								<span class="replace-input" data-type="text" data-name="bank_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $bankInfo->bank_name }}">{{ $bankInfo->bank_name }}</span>
 							</div>
 						</fieldset>
 						<fieldset class="mb-0">
 							<h5>Branch</h5>
 							<div class="form-group mb-1">
-								<span class="replace-input" data-type="text" data-name="bank_branch" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="TAY SAI GON" data-placeholder="Bank Branch" data-id="bank_branch">TAY SAI GON</span>
+								<span class="replace-input" data-type="text" data-name="bank_branch" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $bankInfo->bank_branch }}" data-placeholder="Bank Branch" data-id="bank_branch">{{ $bankInfo->bank_branch }}</span>
 							</div>
 						</fieldset>
 						<div class="row">
@@ -225,7 +240,7 @@
 								<fieldset class="mb-0">
 									<h5>Account Number</h5>
 									<div class="form-group mb-1">
-										<span class="replace-input" data-type="text" data-name="bank_account_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="6868682607535021" data-placeholder="Card Expiry Date" data-id="bank_account_number">6868682607535021</span>
+										<span class="replace-input" data-type="text" data-name="bank_account_number" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $bankInfo->bank_account_number }}" data-placeholder="Card Expiry Date" data-id="bank_account_number">{{ $bankInfo->bank_account_number }}</span>
 									</div>
 								</fieldset>
 							</div>
@@ -233,7 +248,7 @@
 								<fieldset class="mb-0">
 									<h5>Card Holder Name</h5>
 									<div class="form-group mb-1">
-										<span class="replace-input" data-type="text" data-name="bank_card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="NGUYEN HONG NHUNG" data-placeholder="Card Holder Name" data-id="bank_card_holder_name">NGUYEN HONG NHUNG</span>
+										<span class="replace-input" data-type="text" data-name="bank_card_holder_name" data-class="form-control round card-number unknown jp-card-invalid" data-original-value="{{ $bankInfo->bank_card_holder_name }}" data-placeholder="Card Holder Name" data-id="bank_card_holder_name">{{ $bankInfo->bank_card_holder_name }}</span>
 									</div>
 								</fieldset>
 							</div>

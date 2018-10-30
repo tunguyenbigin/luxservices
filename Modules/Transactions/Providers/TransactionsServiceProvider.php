@@ -26,6 +26,9 @@ class TransactionsServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        app()->singleton(\Modules\Transactions\Repositories\TransactionRepositories::class, \Modules\Transactions\Repositories\Eloquents\EloquentTransactionRepositories::class);
+        app()->singleton(\Modules\Transactions\Services\TransactionServices::class, \Modules\Transactions\Services\Eloquents\EloquentTransactionServices::class);
     }
 
     /**
