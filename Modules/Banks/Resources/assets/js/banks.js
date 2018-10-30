@@ -102,4 +102,12 @@ jQuery(document).ready(function($){
     $(document).on('click','#depositAction',function(){
         $('#modDeposit').modal('show')
     })
+
+    $(document).on('click', '#domestic', function(){
+        $('.list-banks-domestic').show();
+    });
+    $(document).on('click', '#international', function(){
+        $('.list-banks-domestic').hide();
+    });
+
 });

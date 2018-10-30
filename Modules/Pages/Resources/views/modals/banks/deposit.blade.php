@@ -20,7 +20,7 @@
               <input type="radio" name="payment-getways" class="custom-control-input" id="domestic" checked>
               <label class="custom-control-label" for="domestic">Domestic</label>
 
-              <div class="list-banks">
+              <div class="list-banks-domestic">
                   <ul>
                       @for($i=1; $i<=30; $i++)
                           <?php if( $i === 13 || $i === 29 || $i === 26 ) continue;?>
@@ -39,6 +39,18 @@
             <div class="custom-control custom-radio">
               <input type="radio" name="payment-getways" class="custom-control-input" id="international">
               <label class="custom-control-label" for="international">International</label>
+
+              <div class="list-banks-international">
+                  <div class="custom-control custom-radio">
+                      <input type="radio" name="payment-getways-international" class="custom-control-input" id="international-available">
+                      <label class="custom-control-label" for="international-available">International Available</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" name="payment-getways-international" class="custom-control-input" id="international-input">
+                      <label class="custom-control-label" for="international-input">International Input</label>
+                  </div>
+              </div>
+
             </div>
           </div>
 

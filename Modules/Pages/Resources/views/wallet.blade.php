@@ -7,13 +7,13 @@
 @section('styles')
 	<link rel="stylesheet" type="text/css" href="{{ asset('storage/app-assets/css/plugins/animate/animate.min.css') }}">
 	<style type="text/css">
-		#modDeposit .list-banks{}
-		#modDeposit .list-banks>ul{}
-		#modDeposit .list-banks>ul>li{
+		#modDeposit .list-banks-domestic{}
+		#modDeposit .list-banks-domestic>ul{}
+		#modDeposit .list-banks-domestic>ul>li{
 			list-style: none;
 			float: left;
 		}
-		#modDeposit .list-banks>ul>li>a{
+		#modDeposit .list-banks-domestic>ul>li>a{
 			padding: 2px;
 			display: block;
 		}
